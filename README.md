@@ -16,7 +16,11 @@ Smart Accounting is a solution for collecting invoices in a digital way.
 
 ## Disclaimer
 
-I published this project to help others implement microservice solutions using Microsoft Azure cloud services. I am aware that there is no step-by-step instruction how to setup every component. I published this repository mainly to show some concepts around integration with Azure cloud services. In the future I plan to organize some live sessions or create videos on my YouTube channel where I will explain implementation details. One more thing - SignalR integration in the Web App source code is not completed yet. There is an issue with authorization - once I solve it out I will publish required changes.
+* I published this project to help others implement microservice solutions using Microsoft Azure cloud services. I am aware that there is no step-by-step instruction how to setup every component. I published this repository mainly to show some concepts around integration with Azure cloud services. In the future I plan to organize some live sessions or create videos on my YouTube channel where I will explain implementation details.
+
+* SignalR integration in the Web App source code is not completed yet. There is an issue with authorization - once I solve it out I will publish required changes.
+
+* Azure AD B2C configuration was used basing on the [Lost-In-Azure-Cloud-Identity](https://github.com/Daniel-Krzyczkowski/Lost-In-Azure-Cloud-Identity) project. There you can find custom policies files with branding files.
 
 
 ## Solution architecture
