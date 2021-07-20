@@ -11,9 +11,12 @@ Smart Accounting is a solution for collecting invoices in a digital way.
 ![smart-accounting4.PNG](images/smart-accounting4.PNG)
 
 
+*If you like this content, please give it a star!*
+![github-start.png](images/github-start.png)
+
 ## Disclaimer
 
-I published this project to help others implement microservice solutions using Microsoft Azure cloud services. I am aware that there is no step-by-step instruction how to setup every component. I published this repository mainly to show some concepts around integration with Azure cloud services. In the future I plan to organize some live sessions or create videos on my YouTube channel where I will explain implementation details.
+I published this project to help others implement microservice solutions using Microsoft Azure cloud services. I am aware that there is no step-by-step instruction how to setup every component. I published this repository mainly to show some concepts around integration with Azure cloud services. In the future I plan to organize some live sessions or create videos on my YouTube channel where I will explain implementation details. One more thing - SignalR integration in the Web App source code is not completed yet. There is an issue with authorization - once I solve it out I will publish required changes.
 
 
 ## Solution architecture
@@ -231,3 +234,7 @@ az deployment group create \
   --template-file smart-accounting-infrastructure.bicep \
   --parameters location=westeurope tenantId=your-tenant-id publisherName='Tech Mind Factory' publisherEmail=youremail@email.com
 ```
+
+## Sample invoice files
+
+In [this](https://github.com/Daniel-Krzyczkowski/Smart-Accounting/tree/main/sample-files) folder you can find invoice files that can be used for tests.
