@@ -1,0 +1,76 @@
+﻿@page "/upload"
+
+@using SmartAccounting.WebPortal.Application.Model;
+@inject SmartAccounting.WebPortal.Application.Infrastructure.IFileProcessorApiService FileProcessorApiService;
+@inject AuthenticationStateProvider AuthenticationStateProvider;
+
+<h1>Upload new invoice file</h1>
+
+<AuthorizeView>
+    <Authorized Context="Auth">
+        <EditForm Model="@invoiceUpload" OnValidSubmit="@HandleUploadAsync">
+            <DataAnnotationsValidator />
+            <ValidationSummary />
+            <InputFile OnChange="HandleFileSelected" multiple />
+            <br />
+            <br />
+            <p>File name: @invoiceUpload.AttachmentFileName</p>
+            <br />
+            <br />
+            <button type="submit" class="btn btn-primary">Send</button>
+            <br />
+            @if (showUploadConfirmation)
+            {
+                <p><b>Invoice file successfully uploaded!</b></p>
+            }
+
+            @if (showFailure)
+            {
+                <p><b>There was an error during file upload. Please try again.</b></p>
+            }
+
+            @if (showProcessingConfirmation)
+            {
+                <p><b>File was successfully processed. Open "my invoices" tab to see invoice details.</b></p>
+            }
+
+        </EditForm>
+    </Authorized>
+    <NotAuthorized>
+        <p>
+            <b>Please authenticate first.</b>
+        </p>
+    </NotAuthorized>
+</AuthorizeView>
+
+@code {
+    private bool showUploadConfirmation = false;
+    private bool showFailure = false;
+    private bool showProcessingConfirmation = false;
+    private InvoiceUpload invoiceUpload = new InvoiceUpload();
+
+    private async Task HandleUploadAsync()
+    {
+        var authState = await AuthenticationStateProvider.GetAuthenticationStateAsync();
+        var user = authState.User;
+        if (user.Identity.IsAuthenticated)
+        {
+            var response = await FileProcessorApiService.UploadInvoiceAsync(invoiceUpload.AttachmentFileName, invoiceUpload);
+            if (response.IsSuccessStatusCode)
+            {
+                showUploadConfirmation = true;
+            }
+
+            else
+            {
+                showFailure = true;
+            }
+        }
+    }
+
+    private void HandleFileSelected(InputFileChangeEventArgs files)
+    {
+        invoiceUpload.Attachment = files.GetMultipleFiles().First().OpenReadStream();
+        invoiceUpload.AttachmentFileName = files.GetMultipleFiles().First().Name;
+    }
+}

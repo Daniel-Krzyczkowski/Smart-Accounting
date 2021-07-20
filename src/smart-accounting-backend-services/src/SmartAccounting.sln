@@ -1,0 +1,93 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31205.134
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DocumentAnalyzer", "DocumentAnalyzer", "{84B6314F-67FE-4ACA-B4F8-F203C8940B49}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "FileProcessor", "FileProcessor", "{BCE4593B-93CF-4279-BA08-304BD81E748B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Notification", "Notification", "{0C237DFE-95CA-412A-A26A-51092298BF14}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ProcessedDocument", "ProcessedDocument", "{141FCAE9-CB13-4E0D-BF1D-1FCB01637514}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BuildingBlocks", "BuildingBlocks", "{E33AF603-E9C0-4FEB-A35C-E911D358E250}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SmartAccounting.ProcessedDocument.API", "ProcessedDocument\SmartAccounting.ProcessedDocument.API\SmartAccounting.ProcessedDocument.API.csproj", "{7D86AAE7-01B6-4953-A030-58EBD559077B}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SmartAccounting.Notification.API", "Notification\SmartAccounting.Notification.API\SmartAccounting.Notification.API.csproj", "{58F4963A-8471-465B-957B-59B3B06E6D40}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SmartAccounting.FileProcessor.API", "FileProcessor\SmartAccounting.FileProcessor.API\SmartAccounting.FileProcessor.API.csproj", "{CF99ED23-4E40-4AD3-A634-B6266547B0C8}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SmartAccounting.DocumentAnalyzer.API", "DocumentAnalyzer\SmartAccounting.DocumentAnalyzer.API\SmartAccounting.DocumentAnalyzer.API.csproj", "{5D0E0E41-21FD-4445-87EC-88A5C1F5C5BE}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SmartAccounting.EventLog", "BuildingBlocks\SmartAccounting.EventLog\SmartAccounting.EventLog.csproj", "{F7A560FE-5560-42B0-A08F-8A35BFE9E916}"
+EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{645A6CA1-9EE5-4D8B-90DA-B57144057B31}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SmartAccounting.EventBus", "BuildingBlocks\SmartAccounting.EventBus\SmartAccounting.EventBus.csproj", "{EBCE57FD-5FEB-4E58-B170-153899D8C15E}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SmartAccounting.Common", "BuildingBlocks\SmartAccounting.Common\SmartAccounting.Common.csproj", "{D7E335BE-CD8B-45E0-B66F-D120BE4FA8F0}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SmartAccounting.Logging", "BuildingBlocks\SmartAccounting.Logging\SmartAccounting.Logging.csproj", "{78A42AE1-53D9-4120-BE0F-82BF1B3F01EE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7D86AAE7-01B6-4953-A030-58EBD559077B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7D86AAE7-01B6-4953-A030-58EBD559077B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7D86AAE7-01B6-4953-A030-58EBD559077B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7D86AAE7-01B6-4953-A030-58EBD559077B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{58F4963A-8471-465B-957B-59B3B06E6D40}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{58F4963A-8471-465B-957B-59B3B06E6D40}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{58F4963A-8471-465B-957B-59B3B06E6D40}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{58F4963A-8471-465B-957B-59B3B06E6D40}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CF99ED23-4E40-4AD3-A634-B6266547B0C8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CF99ED23-4E40-4AD3-A634-B6266547B0C8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CF99ED23-4E40-4AD3-A634-B6266547B0C8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CF99ED23-4E40-4AD3-A634-B6266547B0C8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5D0E0E41-21FD-4445-87EC-88A5C1F5C5BE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5D0E0E41-21FD-4445-87EC-88A5C1F5C5BE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5D0E0E41-21FD-4445-87EC-88A5C1F5C5BE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5D0E0E41-21FD-4445-87EC-88A5C1F5C5BE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F7A560FE-5560-42B0-A08F-8A35BFE9E916}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F7A560FE-5560-42B0-A08F-8A35BFE9E916}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F7A560FE-5560-42B0-A08F-8A35BFE9E916}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F7A560FE-5560-42B0-A08F-8A35BFE9E916}.Release|Any CPU.Build.0 = Release|Any CPU
+		{645A6CA1-9EE5-4D8B-90DA-B57144057B31}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{645A6CA1-9EE5-4D8B-90DA-B57144057B31}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{645A6CA1-9EE5-4D8B-90DA-B57144057B31}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{645A6CA1-9EE5-4D8B-90DA-B57144057B31}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EBCE57FD-5FEB-4E58-B170-153899D8C15E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EBCE57FD-5FEB-4E58-B170-153899D8C15E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EBCE57FD-5FEB-4E58-B170-153899D8C15E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EBCE57FD-5FEB-4E58-B170-153899D8C15E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D7E335BE-CD8B-45E0-B66F-D120BE4FA8F0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D7E335BE-CD8B-45E0-B66F-D120BE4FA8F0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D7E335BE-CD8B-45E0-B66F-D120BE4FA8F0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D7E335BE-CD8B-45E0-B66F-D120BE4FA8F0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{78A42AE1-53D9-4120-BE0F-82BF1B3F01EE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{78A42AE1-53D9-4120-BE0F-82BF1B3F01EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{78A42AE1-53D9-4120-BE0F-82BF1B3F01EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{78A42AE1-53D9-4120-BE0F-82BF1B3F01EE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{7D86AAE7-01B6-4953-A030-58EBD559077B} = {141FCAE9-CB13-4E0D-BF1D-1FCB01637514}
+		{58F4963A-8471-465B-957B-59B3B06E6D40} = {0C237DFE-95CA-412A-A26A-51092298BF14}
+		{CF99ED23-4E40-4AD3-A634-B6266547B0C8} = {BCE4593B-93CF-4279-BA08-304BD81E748B}
+		{5D0E0E41-21FD-4445-87EC-88A5C1F5C5BE} = {84B6314F-67FE-4ACA-B4F8-F203C8940B49}
+		{F7A560FE-5560-42B0-A08F-8A35BFE9E916} = {E33AF603-E9C0-4FEB-A35C-E911D358E250}
+		{EBCE57FD-5FEB-4E58-B170-153899D8C15E} = {E33AF603-E9C0-4FEB-A35C-E911D358E250}
+		{D7E335BE-CD8B-45E0-B66F-D120BE4FA8F0} = {E33AF603-E9C0-4FEB-A35C-E911D358E250}
+		{78A42AE1-53D9-4120-BE0F-82BF1B3F01EE} = {E33AF603-E9C0-4FEB-A35C-E911D358E250}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C8B9C15C-F411-4B87-BC79-F8A0E0D73BF9}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,89 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: document-analyzer-api-dep
+  namespace: dev-smart-accounting-services
+spec:
+  selector:
+    matchLabels:
+      app: document-analyzer-api
+  replicas: 3 # tells deployment to run 2 pods matching the template
+  strategy: 
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 1
+  template: # create pods using pod definition in this template
+    metadata:
+      labels:
+        app: document-analyzer-api
+        aadpodidbinding: "aks-pods-identity"
+    spec:
+      containers:
+      - name: document-analyzer-api-container
+        image: acrsmartaccounting.azurecr.io/documentanalyzerapi:latest
+        imagePullPolicy: Always
+        env:
+          - name: FormRecognizerConfig__Key
+            valueFrom:
+             secretKeyRef:
+               name: form-recognizer-key
+               key: form-recognizer-key
+          - name: ApplicationInsightsConfig__InstrumentationKey
+            valueFrom:
+             secretKeyRef:
+               name: application-insights-key
+               key: application-insights-key
+          - name: CosmosDbConfig__ConnectionString
+            valueFrom:
+             secretKeyRef:
+               name: cosmos-db-connection-string
+               key: cosmos-db-connection-string
+          - name: SqlDbConfig__ConnectionString
+            valueFrom:
+             secretKeyRef:
+               name: sql-db-connection-string
+               key: sql-db-connection-string
+          - name: BlobStorageConfig__ConnectionString
+            valueFrom:
+             secretKeyRef:
+               name: storage-account-connection-string
+               key: storage-account-connection-string
+          - name: BlobStorageConfig__Key
+            valueFrom:
+             secretKeyRef:
+               name: storage-account-key
+               key: storage-account-key
+          - name: ServiceBusConfig__ListenAndSendConnectionString
+            valueFrom:
+             secretKeyRef:
+               name: service-bus-connection-string
+               key: service-bus-connection-string
+        ports:
+        - containerPort: 80
+        volumeMounts:
+          - mountPath: "/mnt/secrets-store"
+            name: secrets-store-inline
+            readOnly: true
+      volumes:
+        - name: secrets-store-inline
+          csi:
+            driver: secrets-store.csi.k8s.io
+            readOnly: true
+            volumeAttributes:
+              secretProviderClass: "kv-smart-accounting"
+
+---
+
+apiVersion: v1 
+kind: Service 
+metadata: 
+  name:  document-analyzer-api-svc
+  namespace: dev-smart-accounting-services
+spec: 
+  type: ClusterIP
+  selector: 
+    app:  document-analyzer-api
+  ports: 
+  - name: https 
+    port: 443
+    targetPort: 80

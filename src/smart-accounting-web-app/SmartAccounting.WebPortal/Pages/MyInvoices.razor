@@ -1,0 +1,71 @@
+﻿@page "/my-invoices"
+@using SmartAccounting.WebPortal.Application.Model;
+@inject SmartAccounting.WebPortal.Application.Infrastructure.IProcessedDocumentApiService ProcessedDocumentApiService;
+@inject AuthenticationStateProvider AuthenticationStateProvider
+@inject IJSRuntime JSRuntime;
+
+<h1>My invoices</h1>
+
+<AuthorizeView>
+    <Authorized>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Invoice ID</th>
+                    <th>Invoice date</th>
+                    <th>Customer name</th>
+                    <th>Vendor name</th>
+                    <th>Invoice total</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var invoice in _invoices)
+                {
+                    <tr>
+                        <td>@invoice.InvoiceId</td>
+                        <td>@invoice.InvoiceDate</td>
+                        <td>@invoice.CustomerName</td>
+                        <td>@invoice.VendorName</td>
+                        <td>@invoice.InvoiceTotal</td>
+                        <td>
+                            <button class="btn btn-primary"
+                                    @onclick="@(() => ShowInvoiceFileAsync(invoice))">
+                                Display invoice
+                            </button>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </Authorized>
+    <NotAuthorized>
+        <p>
+            <b>Please authenticate first.</b>
+        </p>
+    </NotAuthorized>
+</AuthorizeView>
+
+
+@code {
+    private IReadOnlyCollection<Invoice> _invoices = new List<Invoice>();
+
+    private async Task LoadInvoicesAsync()
+    {
+        var authState = await AuthenticationStateProvider.GetAuthenticationStateAsync();
+        var user = authState.User;
+        if (user.Identity.IsAuthenticated)
+        {
+            _invoices = await ProcessedDocumentApiService.GetAllInvoicesAsync();
+        }
+    }
+
+    private async Task ShowInvoiceFileAsync(Invoice invoice)
+    {
+        await JSRuntime.InvokeAsync<object>("open", invoice.InvoiceFileUrl, "_blank");
+    }
+
+    protected override async Task OnInitializedAsync()
+    {
+        await LoadInvoicesAsync();
+    }
+}

@@ -1,0 +1,29 @@
+version: '3.4'
+
+services:
+  documentanalyzer.api:
+    image: ${DOCKER_REGISTRY-}documentanalyzerapi
+    build:
+      context: .
+      dockerfile: DocumentAnalyzer/SmartAccounting.DocumentAnalyzer.API/Dockerfile
+
+
+  fileprocessor.api:
+    image: ${DOCKER_REGISTRY-}fileprocessorapi
+    build:
+      context: .
+      dockerfile: FileProcessor/SmartAccounting.FileProcessor.API/Dockerfile
+
+
+  notification.api:
+    image: ${DOCKER_REGISTRY-}notificationapi
+    build:
+      context: .
+      dockerfile: Notification/SmartAccounting.Notification.API/Dockerfile
+
+
+  processeddocument.api:
+    image: ${DOCKER_REGISTRY-}processeddocumentapi
+    build:
+      context: .
+      dockerfile: ProcessedDocument/SmartAccounting.ProcessedDocument.API/Dockerfile
