@@ -42,7 +42,7 @@ Processed documents can be accessed using this microservice. Details about invoi
 
 Notification service is used to notify users about the scan result in the real time. Once all details are saved in the database by the Document Analyzer microservice , Notification microservice is notified, and publishes new event using Azure SignalR Service to the application. Microservice is written using ASP .NET Core .NET 5 Web API.
 
-### Smart Accounting Web App
+### [Smart Accounting Web App](https://github.com/Daniel-Krzyczkowski/Smart-Accounting/tree/main/src/smart-accounting-web-app)
 
 Web application for end users written with Blazor. Users can authenticate and upload invoice files. They can also display already scanned invoices data and display originally uploaded files.
 
