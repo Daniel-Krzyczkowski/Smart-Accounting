@@ -208,6 +208,7 @@ az aks update -n aks-smart-accounting -g rg-smart-accounting --attach-acr acrsma
 
 ### Enable access for AKS VNET in the Azure SQL Firewall settings in the Azure portal
 
+https://docs.microsoft.com/en-us/azure/azure-sql/database/vnet-service-endpoint-rule-overview#azure-portal-steps
 
 ## Azure services setup
 
@@ -226,7 +227,6 @@ az aks update -n aks-smart-accounting -g rg-smart-accounting --attach-acr acrsma
 
 
 #### Deploy template using below command using Azure CLI:
-
 
 ```
 today=$(date +"%d-%b-%Y")
