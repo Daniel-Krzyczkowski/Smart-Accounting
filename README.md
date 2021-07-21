@@ -4,6 +4,8 @@ Smart Accounting is a solution for collecting invoices in a digital way.
 
 ![smart-accounting1.PNG](images/smart-accounting1.PNG)
 
+![smart-accounting6.PNG](images/smart-accounting6.PNG)
+
 ![smart-accounting2.PNG](images/smart-accounting2.PNG)
 
 ![smart-accounting3.PNG](images/smart-accounting3.PNG)
