@@ -21,7 +21,10 @@ namespace SmartAccounting.Notification.API.Core.DependencyInjection
                 {
                     OnMessageReceived = context =>
                     {
-                        var accessToken = context.Request.Query["access_token"];
+                        StringValues authorizationHeaderValue;
+                        context.Request.Headers.TryGetValue("Authorization", out authorizationHeaderValue);
+                        AuthenticationHeaderValue.TryParse(authorizationHeaderValue, out var headerValue);
+                        var accessToken = headerValue?.Parameter;
 
                         var path = context.HttpContext.Request.Path;
                         if (!string.IsNullOrEmpty(accessToken) &&
