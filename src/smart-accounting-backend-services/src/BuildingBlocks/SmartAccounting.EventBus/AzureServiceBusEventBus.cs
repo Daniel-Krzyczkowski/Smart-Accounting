@@ -139,6 +139,7 @@ namespace SmartAccounting.EventBus
                     var integrationEvent = JsonSerializer.Deserialize(messageData, eventType);
                     var concreteType = typeof(IIntegrationEventHandler<>).MakeGenericType(eventType);
                     await (Task)concreteType.GetMethod("HandleAsync").Invoke(handler, new object[] { integrationEvent });
+                    await arg.CompleteMessageAsync(arg.Message);
                 }
             }
         }
