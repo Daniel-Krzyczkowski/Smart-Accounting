@@ -41,7 +41,11 @@ namespace SmartAccounting.FileProcessor.API.Core.DependencyInjection
                 var serviceBusClient = implementationFactory.GetRequiredService<ServiceBusClient>();
                 var serviceBusReceiver = serviceBusClient.CreateProcessor(eventBusConfiguration.TopicName,
                                                                           eventBusConfiguration.Subscription,
-                                                                          new ServiceBusProcessorOptions());
+                                                                          new ServiceBusProcessorOptions
+                                                                          {
+                                                                              AutoCompleteMessages = false
+                                                                          });
+
 
                 return serviceBusReceiver;
             });
