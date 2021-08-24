@@ -1,0 +1,37 @@
+  jobs:
+  - deployment: Deploy
+    displayName: 'Deploy docker containers to AKS cluster'
+    pool:
+      vmImage: ubuntu-latest
+    environment: ${{parameters.environment}}
+    strategy:
+      runOnce:
+        deploy:
+          steps:
+          - task: DownloadPipelineArtifact@2
+            displayName: 'Download AKS deployment manifests'
+            inputs:
+              artifactName: 'manifests'
+              downloadPath: '$(System.ArtifactsDirectory)/manifests'
+
+          - task: KubernetesManifest@0
+            displayName: 'Deploy services to AKS cluster'
+            inputs:
+              action: 'deploy'
+              kubernetesServiceConnection: ${{parameters.kubernetesConnectionName}}
+              namespace: ${{parameters.kubernetesNamespace}}
+              manifests: |
+                 $(System.ArtifactsDirectory)/manifests/document-analyzer-microservice.yml
+                 $(System.ArtifactsDirectory)/manifests/file-processor-microservice.yml
+                 $(System.ArtifactsDirectory)/manifests/notification-microservice.yml
+                 $(System.ArtifactsDirectory)/manifests/processed-document-microservice.yml
+
+          - task: Kubernetes@1
+            displayName: Update ingress routes
+            inputs:
+              connectionType: Azure Resource Manager
+              azureSubscriptionEndpoint: ${{parameters.azureConnectionName}}
+              azureResourceGroup: ${{parameters.azureResourceGroup}}
+              kubernetesCluster: ${{parameters.kubernetesClusterName}}
+              command: apply
+              arguments: -f $(System.ArtifactsDirectory)/manifests/create-ingress.yml

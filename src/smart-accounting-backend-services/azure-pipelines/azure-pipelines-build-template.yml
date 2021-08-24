@@ -1,0 +1,33 @@
+  jobs:  
+  - job: BuildAndPush
+    displayName: "Build and push Docker containers"
+    pool:
+      vmImage: ubuntu-latest
+    steps:
+    - task: DockerCompose@0
+      displayName: 'Build Docker images'
+      inputs:
+        containerregistrytype: 'Azure Container Registry'
+        azureSubscription: ${{parameters.azureConnectionName}}
+        azureContainerRegistry: ${{parameters.azureContainerRegistry}}
+        dockerComposeFile: '**/docker-compose.yml'
+        action: 'Build services'
+        additionalImageTags: '$(Build.BuildId)'
+        includeLatestTag: true
+
+    - task: DockerCompose@0
+      displayName: 'Push Docker images to Azure Container Registry'
+      inputs:
+        containerregistrytype: 'Azure Container Registry'
+        azureSubscription: ${{parameters.azureConnectionName}}
+        azureContainerRegistry: ${{parameters.azureContainerRegistry}}
+        dockerComposeFile: '**/docker-compose.yml'
+        action: 'Push services'
+        additionalImageTags: '$(Build.BuildId)'
+        includeLatestTag: true
+
+    - task: PublishPipelineArtifact@1
+      displayName: 'Publish AKS deployment manifests'
+      inputs:
+        artifactName: 'manifests'
+        path: '$(System.DefaultWorkingDirectory)/kubernetes'

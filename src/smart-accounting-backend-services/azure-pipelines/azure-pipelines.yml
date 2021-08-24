@@ -1,0 +1,31 @@
+trigger:
+- develop
+
+stages:
+
+- stage: Build
+  displayName: 'Build and push Docker containers'
+  variables:
+  - group: 'smart-accounting-backend-dev-env-vg'
+  jobs:
+  - template: azure-pipelines-build-template.yml
+    parameters:
+      azureConnectionName: '$(azureConnectionName)'
+      azureContainerRegistry: '$(azureContainerRegistry)'
+
+- stage: DeployDEV
+  displayName: 'Deploy docker containers to AKS cluster'
+  condition: succeeded()
+  dependsOn: Build
+  variables:
+  - group: 'smart-accounting-backend-dev-env-vg'
+  jobs:
+  - template: azure-pipelines-deployment-template.yml
+    parameters:
+      azureConnectionName: '$(azureConnectionName)'
+      kubernetesConnectionName: '$(kubernetesConnectionName)'
+      azureContainerRegistry: '$(azureContainerRegistry)'
+      azureResourceGroup: '$(azureResourceGroup)'
+      kubernetesNamespace: '$(kubernetesNamespace)'
+      kubernetesClusterName: '$(kubernetesClusterName)'
+      environment: '$(environment)'

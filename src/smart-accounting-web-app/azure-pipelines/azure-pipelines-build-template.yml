@@ -1,0 +1,33 @@
+
+jobs:
+  - job: 'Build'
+    displayName: "Build Smart Accounting Web App"
+    pool:
+      vmImage: 'VS2017-Win2016'
+    steps:
+
+    - task: DotNetCoreCLI@2
+      displayName: Restore NuGet packages
+      inputs:
+        command: 'restore'
+        projects: '**/*.csproj'
+      
+    - task: DotNetCoreCLI@2
+      displayName: Build project
+      inputs:
+        command: 'build'
+        projects: '**/*.csproj'
+
+    - task: DotNetCoreCLI@2
+      displayName: Publish project
+      inputs:
+        command: publish
+        arguments: '--configuration Release --output $(Build.ArtifactStagingDirectory)'
+        projects: '**/*.csproj'
+        zipAfterPublish: true
+      
+    - task: PublishBuildArtifacts@1
+      displayName: Publish package ready for deployment
+      inputs:
+        PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+        artifactName: 'drop'

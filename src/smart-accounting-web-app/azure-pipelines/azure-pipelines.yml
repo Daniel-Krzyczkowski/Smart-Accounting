@@ -1,0 +1,22 @@
+trigger:
+- master
+
+stages:
+- stage: Build
+  displayName: 'Build Smart Accounting Web App'
+  jobs:
+  - template: azure-pipelines-build-template.yml
+
+- stage: DeployDEV
+  displayName: 'Deploy Smart Accounting Web App to DEV environment'
+  condition: succeeded()
+  dependsOn: Build
+  variables:
+  - group: 'smart-accounting-web-app-dev-env-vg'
+  jobs:
+  - template: azure-pipelines-deployment-template.yml
+    parameters:
+      azureConnectionName: '$(azureResourceManagerConnectionName)'
+      webAppName: '$(webAppName)'
+      resourceGroupName: '$(resourceGroupName)'
+      environment: 'DEV'

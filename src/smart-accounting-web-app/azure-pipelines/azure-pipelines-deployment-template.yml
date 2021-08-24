@@ -1,0 +1,26 @@
+  jobs:
+  - deployment: Deploy
+    displayName: "Deploy Smart Accounting Web App"
+    environment: ${{parameters.environment}}
+    pool:
+      vmImage: 'VS2017-Win2016'
+    strategy:
+      runOnce:
+        deploy:
+          steps:
+          - task: DownloadBuildArtifacts@0
+            displayName: 'Download the build artifacts'
+            inputs:
+              buildType: 'current'
+              downloadType: 'single'
+              artifactName: 'drop'
+              downloadPath: '$(System.DefaultWorkingDirectory)'
+
+          - task: AzureWebApp@1
+            displayName: Release package to Azure Web App
+            inputs:
+              azureSubscription: ${{parameters.azureConnectionName}}
+              appName: ${{parameters.webAppName}}
+              resourceGroupName: ${{parameters.resourceGroupName}}
+              package: $(System.DefaultWorkingDirectory)/**/*.zip
+              deploymentMethod: zipDeploy
