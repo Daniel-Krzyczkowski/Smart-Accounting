@@ -61,8 +61,7 @@ Notification service is used to notify users about the scan result in the real t
 
 ## Azure Containers Registry
 
-Aaa
-
+Azure Container Registry is a managed, private Docker registry service based on the open-source Docker Registry 2.0. With ACR we can store and manage private Docker container images and related artifacts.
 
 ## Azure Web App
 
