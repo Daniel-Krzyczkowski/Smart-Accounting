@@ -147,10 +147,10 @@ Let's discuss the above solution structure and projects which it includes.
 
 *BuildingBlocks* folder contains fours projects:
 
-1. SmartAccounting.Common - contains commonly used classed like API exception handler or common response structure
-2. SmartAccounting.EventBus - contains components used to iplmement asynchronous communication amond microservices using Azure Service Bus 
-3. SmartAccounting.EventLog - contains components used to implement event history persistence (like storing successfully processed invoice file)
-4. SmartAccounting.Logging - contains components used to implement logging with Azure Application Insights
+1. **SmartAccounting.Common** - contains commonly used classed like API exception handler or common response structure
+2. **SmartAccounting.EventBus** - contains components used to iplmement asynchronous communication amond microservices using Azure Service Bus 
+3. **SmartAccounting.EventLog** - contains components used to implement event history persistence (like storing successfully processed invoice file)
+4. **SmartAccounting.Logging** - contains components used to implement logging with Azure Application Insights
 
 ### [File Processor microservice](https://github.com/Daniel-Krzyczkowski/Smart-Accounting/tree/main/src/smart-accounting-backend-services/src/FileProcessor/SmartAccounting.FileProcessor.API)
 
@@ -282,9 +282,9 @@ Variables are kept in the dedicated variable group in the Azure DevOps:
 
 In the [*azure-pipelines*](https://github.com/Daniel-Krzyczkowski/Smart-Accounting/tree/main/src/smart-accounting-web-app/azure-pipelines) folder there are three YAML files:
 
-* azure-pipelines-build-template.yml - this file contains steps responsible for building package with Blazor web application
-* azure-pipelines-deployment-template.yml - this file contains steps responsible for publishing Blazor web application package to Azure Web App
-* azure-pipelines.yml - this file contains stages with referenced template files mentioned above
+* **azure-pipelines-build-template.yml** - this file contains steps responsible for building package with Blazor web application
+* **azure-pipelines-deployment-template.yml** - this file contains steps responsible for publishing Blazor web application package to Azure Web App
+* **azure-pipelines.yml** - this file contains stages with referenced template files mentioned above
 
 ![smart-accounting11.PNG](images/smart-accounting11.PNG)
 
@@ -292,9 +292,9 @@ In the [*azure-pipelines*](https://github.com/Daniel-Krzyczkowski/Smart-Accounti
 
 In the [*azure-pipelines*](https://github.com/Daniel-Krzyczkowski/Smart-Accounting/tree/main/src/smart-accounting-backend-services/azure-pipelines) folder there are three YAML files:
 
-* azure-pipelines-build-template.yml - this file contains steps responsible for building Docker images with microservices
-* azure-pipelines-deployment-template.yml - this file contains steps responsible for getting Kubernetes deployment manifests, deploying Docker containers, and updating Ingress routes
-* azure-pipelines.yml - this file contains stages with referenced template files mentioned above
+* **azure-pipelines-build-template.yml** - this file contains steps responsible for building Docker images with microservices
+* **azure-pipelines-deployment-template.yml** - this file contains steps responsible for getting Kubernetes deployment manifests, deploying Docker containers, and updating Ingress routes
+* **azure-pipelines.yml** - this file contains stages with referenced template files mentioned above
 
 Process of publishing microservices to Azure Kubernetes Cluster is the following:
 
