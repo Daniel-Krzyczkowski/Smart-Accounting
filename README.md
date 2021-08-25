@@ -262,8 +262,8 @@ Communication with microservices is implemented in the the [*FileProcessorApiSer
 
 In the *ApiService* base class there are two methods:
 
-* GetAndAddApiAccessTokenToAuthorizationHeaderAsync - method responsible for adding access token to the authorization HTTP header
-* GetAndAddApiSubscriptionKeyHeaderAsync - method responsible for adding Azure API Management subscription key to the HTTP request
+* **GetAndAddApiAccessTokenToAuthorizationHeaderAsync** - method responsible for adding access token to the authorization HTTP header
+* **GetAndAddApiSubscriptionKeyHeaderAsync** - method responsible for adding Azure API Management subscription key to the HTTP request
 
 To receive real-time notifications, there is [*SignalRCommunicationService*](https://github.com/Daniel-Krzyczkowski/Smart-Accounting/blob/main/src/smart-accounting-web-app/src/SmartAccounting.WebPortal/Application/Infrastructure/SignalRCommunicationService.cs) class implemented. At the moment of writing this article there is an issue with authorization - once I solve it out I will publish required changes.
 
