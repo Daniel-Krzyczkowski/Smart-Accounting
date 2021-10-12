@@ -2,8 +2,10 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Primitives;
 using Microsoft.Identity.Web;
 using SmartAccounting.Notification.API.Infrastructure.AuthorizationPolicies;
+using System.Net.Http.Headers;
 using System.Threading.Tasks;
 
 namespace SmartAccounting.Notification.API.Core.DependencyInjection
