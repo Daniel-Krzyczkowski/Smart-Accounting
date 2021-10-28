@@ -285,7 +285,9 @@ In the [*azure-pipelines*](https://github.com/Daniel-Krzyczkowski/Smart-Accounti
 * **azure-pipelines-deployment-template.yml** - this file contains steps responsible for publishing Blazor web application package to Azure Web App
 * **azure-pipelines.yml** - this file contains stages with referenced template files mentioned above
 
-![smart-accounting11.PNG](images/smart-accounting11.PNG)
+![smart-accounting3.PNG](images/smart-accounting3.PNG)
+
+![smart-accounting-deployment-diag-1.png](images/smart-accounting-deployment-diag-1.png)
 
 ## Smart Accounting microservices
 
@@ -303,6 +305,8 @@ Process of publishing microservices to Azure Kubernetes Cluster is the following
 4. Once all microservices are pushed, Ingress routes in Kubernetes are updated to make it possible to communicate with microservices
 
 ![smart-accounting10.PNG](images/smart-accounting10.PNG)
+
+![smart-accounting-deployment-diag-2.png](images/smart-accounting-deployment-diag-2.png)
 
 # Infrastructure configuration
 
